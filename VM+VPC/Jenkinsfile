@@ -39,7 +39,7 @@ pipeline {
 		 }
 	 }
     
-    stage('Initialize Terraform Action') {
+    stage('Terraform Action') {
 		 steps {  
 			  dir('VM+VPC')
 			 {
