@@ -1,0 +1,70 @@
+pipeline {
+    agent any
+
+
+    environment {
+    SVC_ACCOUNT_KEY = credentials('terraform-auth')
+  }
+     
+    stages {
+        stage ('checkout'){
+            steps {
+                git branch: 'main', url: 'https://github.com/SrinuVadlapudi/ter.git'
+		                           
+            }
+        }
+      
+
+		stage('Set Terraform path') {
+            steps {
+                script {
+                    def tfHome = tool name: 'Terraform'
+                    env.PATH = "${tfHome}:${env.PATH}"
+                }
+                 
+		sh 'mkdir -p ter' 
+                sh 'echo $SVC_ACCOUNT_KEY | base64 -d > ./ter/veera999-2cdabff084af.json'
+                sh 'pwd'
+                sh 'terraform --version'    
+            }
+        }
+        
+         stage('Initialize Terraform Init') {
+		 steps {  
+			  dir('VM+VPC')
+			 {
+               sh 'terraform init'
+			 }
+		 }
+	 }
+				 
+	stage('Terraform Plan') {
+		 steps {  
+			  dir('VM+VPC')
+			 {
+                sh 'terraform plan'
+			 }
+		 }
+	}
+				 
+	
+	    
+	    stage('Terraform Apply') {
+		 steps {  
+			  dir('VM+VPC')
+			 {
+                sh 'terraform apply -auto-approve'
+			 }
+		 }
+	}             
+	 stage('Terraform Destroy') {
+		 steps {  
+			  dir('VM+VPC')
+			 {
+            //   sh 'terraform destroy -auto-approve'
+			 }
+		 }
+	}             
+}
+
+}
