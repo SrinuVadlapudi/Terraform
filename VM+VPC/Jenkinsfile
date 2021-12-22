@@ -34,37 +34,10 @@ pipeline {
 			  dir('VM+VPC')
 			 {
                sh 'terraform init'
+               sh 'terraform plan'
+	       sh 'terraform apply -auto-approve'
 			 }
 		 }
 	 }
 				 
-	stage('Terraform Plan') {
-		 steps {  
-			  dir('VM+VPC')
-			 {
-                sh 'terraform plan'
-			 }
-		 }
-	}
-				 
 	
-	    
-	    stage('Terraform Apply') {
-		 steps {  
-			  dir('VM+VPC')
-			 {
-                sh 'terraform apply -auto-approve'
-			 }
-		 }
-	}             
-	 stage('Terraform Destroy') {
-		 steps {  
-			  dir('VM+VPC')
-			 {
-            //   sh 'terraform destroy -auto-approve'
-			 }
-		 }
-	}             
-}
-
-}
