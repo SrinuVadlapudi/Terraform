@@ -33,7 +33,7 @@ pipeline {
 		 steps {  
 			dir('Terra-all')
 			 {
-       //      sh 'terraform init'
+             sh 'terraform init'
 			 }
 		 }
 	 }
@@ -42,7 +42,7 @@ pipeline {
 		 steps {  
 			dir('Terra-all')
 			 {
-      //       sh 'terraform plan'
+            sh 'terraform plan'
 			 }
 		 }
 	}
@@ -53,16 +53,7 @@ pipeline {
 		 steps {  
 			dir('Terra-all')
 			 {
-      //        sh 'terraform apply -auto-approve'
-			 }
-		 }
-	}             
-	    
-	    stage('Terraform Show') {
-		 steps {  
-			dir('Terra-all')
-			 {
-      //        sh 'terraform show'
+              sh 'terraform apply -auto-approve'
 			 }
 		 }
 	}             
@@ -72,7 +63,7 @@ pipeline {
 		 steps {  
 			  dir('Terra-all')
 			 {
-           sh 'terraform destroy -auto-approve'
+       //    sh 'terraform destroy -auto-approve'
 			 }
 		 }
 	}             
