@@ -34,11 +34,23 @@ pipeline {
 			  dir('VM+VPC')
 			 {
                sh 'terraform init'
-               sh 'terraform plan'
-	       sh 'terraform apply -auto-approve'
+            
 			 }
 		 }
 	 }
+    
+    stage('Initialize Terraform Action') {
+		 steps {  
+			  dir('VM+VPC')
+			 {
+               sh 'terraform $TF_ACTION $TF_APPROVE'
+               
+			 }
+		 }
+	 }
+    
+    
+    
     }			 
 	
     }
