@@ -89,6 +89,8 @@ resource "google_compute_instance_template" "instance_template" {
  // (target-pool)
 resource "google_compute_target_pool" "pol" {
   name = "instance"
+  region       = "us-central1"
+
 }
 
 	   
