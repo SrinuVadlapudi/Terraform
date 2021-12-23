@@ -26,7 +26,7 @@ resource "google_compute_instance" "vm-instance" {
   }
 }
  resource "google_compute_network" "vpc_network"  {
-  name = "test01"
+  name = "vpc-test01"
  } 
  
 
