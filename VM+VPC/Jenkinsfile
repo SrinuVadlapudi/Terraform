@@ -60,15 +60,7 @@ pipeline {
 			 }
 		 }
 	 }
-	     stage('Initialize Terraform Init') {
-		 steps {  
-			  dir('VM+VPC')
-			 {
-         //      sh 'terraform init'
-            
-			 }
-		 }
-	 }
+	    
     
     }			 
 	
