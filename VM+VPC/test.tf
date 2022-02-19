@@ -1,6 +1,6 @@
 provider "google" {
  
-  project = "veera999"
+  project = "siva99"
   region  = "us-east1"
   zone    = "us-east1-b"
 }
