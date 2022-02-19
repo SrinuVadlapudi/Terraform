@@ -23,7 +23,7 @@ pipeline {
                 }
                  
 		sh 'mkdir -p ter' 
-                sh 'echo $SVC_ACCOUNT_KEY | base64 -d > ./ter/veera999-2cdabff084af.json'
+                sh 'echo $SVC_ACCOUNT_KEY | base64 -d > ./ter/key.json'
                 sh 'pwd'
                 sh 'terraform --version'    
             }
